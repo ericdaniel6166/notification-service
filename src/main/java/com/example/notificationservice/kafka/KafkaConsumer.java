@@ -1,7 +1,7 @@
 package com.example.notificationservice.kafka;
 
 import com.example.notificationservice.event.OrderPlacedEvent;
-import com.example.springbootmicroservicesframework.kafka.AppEvent;
+import com.example.springbootmicroservicesframework.kafka.Event;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -18,14 +18,24 @@ public class KafkaConsumer {
 
     final ModelMapper modelMapper;
 
-    @KafkaListener(topics = "notificationTopic",
-            groupId = "${spring.kafka.consumer.group-id:notificationId}",
-            containerFactory = "kafkaListenerContainerFactory",
-            concurrency = "${spring.kafka.consumer.properties.concurrency:1}"
+    @KafkaListener(topics = "${spring.kafka.consumers.notification-consumer.topic-name}",
+            groupId = "${spring.kafka.consumers.notification-consumer.group-id}",
+            containerFactory = "notificationKafkaListenerContainerFactory",
+            concurrency = "${spring.kafka.consumers.notification-consumer.properties.concurrency}"
     )
-    public void handleNotification(AppEvent event) {
+    public void handleNotification(Event event) {
         OrderPlacedEvent placedEvent = modelMapper.map(event.getPayload(), OrderPlacedEvent.class);
         log.info("Received notification, order number: {}", placedEvent.getOrderNumber());
+    }
+
+    @KafkaListener(topics = "${spring.kafka.consumers.internal-consumer.topic-name}",
+            groupId = "${spring.kafka.consumers.internal-consumer.group-id}",
+            containerFactory = "internalKafkaListenerContainerFactory",
+            concurrency = "${spring.kafka.consumers.internal-consumer.properties.concurrency}"
+    )
+    public void handleInternalConsumer(Event event) {
+        OrderPlacedEvent placedEvent = modelMapper.map(event.getPayload(), OrderPlacedEvent.class);
+        log.info("Handle from internal topic, order number: {}", placedEvent.getOrderNumber());
     }
 
 }
