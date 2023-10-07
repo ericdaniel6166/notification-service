@@ -1,4 +1,4 @@
-package com.example.notificationservice.controller;
+package com.example.notificationservice.api;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
