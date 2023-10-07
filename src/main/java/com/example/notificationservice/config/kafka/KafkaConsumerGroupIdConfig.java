@@ -1,6 +1,6 @@
-package com.example.notificationservice.kafka;
+package com.example.notificationservice.config.kafka;
 
-import com.example.springbootmicroservicesframework.kafka.KafkaConsumerConfig;
+import com.example.springbootmicroservicesframework.config.kafka.KafkaConsumerConfig;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
