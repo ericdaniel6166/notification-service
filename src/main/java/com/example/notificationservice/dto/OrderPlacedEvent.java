@@ -1,4 +1,4 @@
-package com.example.notificationservice.event;
+package com.example.notificationservice.dto;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
