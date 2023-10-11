@@ -20,12 +20,12 @@ spring:
     consumers:
       internal-consumer:
         topic-name: internalTopic
-        group-id: internalId
+        group-id: internalId-${app.application-name}
         properties:
           concurrency: ${app.kafka-concurrency}
       notification-consumer:
         topic-name: notificationTopic
-        group-id: notificationId
+        group-id: notificationId-${app.application-name}
         properties:
           concurrency: ${app.kafka-concurrency}
 #    consumer:
