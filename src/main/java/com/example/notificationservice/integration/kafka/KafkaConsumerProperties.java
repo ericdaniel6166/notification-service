@@ -1,4 +1,4 @@
-package com.example.notificationservice.config.kafka;
+package com.example.notificationservice.integration.kafka;
 
 import lombok.AccessLevel;
 import lombok.Data;
