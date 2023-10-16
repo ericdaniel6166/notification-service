@@ -58,3 +58,9 @@ server:
   port: ${app.server-port}
   servlet:
     context-path: /${app.context-path}
+
+logging:
+  level:
+    root: INFO
+  pattern:
+    level: "%5p[${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
