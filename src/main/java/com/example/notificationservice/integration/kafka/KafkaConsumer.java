@@ -1,7 +1,7 @@
 package com.example.notificationservice.integration.kafka;
 
 import com.example.notificationservice.dto.OrderPlacedEvent;
-import com.example.springbootmicroservicesframework.kafka.event.Event;
+import com.example.springbootmicroservicesframework.integration.kafka.event.Event;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
