@@ -12,11 +12,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Slf4j
-@FieldDefaults(level = AccessLevel.PRIVATE)
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 public class KafkaConsumer {
 
-    final ModelMapper modelMapper;
+    ModelMapper modelMapper;
 
     @KafkaListener(topics = "${spring.kafka.consumers.notification-consumer.topic-name}",
             groupId = "${spring.kafka.consumers.notification-consumer.group-id}",
