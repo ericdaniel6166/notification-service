@@ -3,3 +3,4 @@ app:
   kafka-hostname: kafka
   kafka-port: 29092
   keycloak-host: keycloak
+  redis-host: redis
